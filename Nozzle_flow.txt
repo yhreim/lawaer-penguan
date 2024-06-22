@@ -1,0 +1,14 @@
+Rein 7e5 入口雷诺数
+case 1 "案例号：1 = 弱激波, 2 = 强激波"
+Min 0.46 入口马赫数
+gamma 1.4 比热率
+Pr 0.72 普朗特数
+Rs 287[J/kg/K] 比气体常数
+Tin_tot 500[R] 入口总温度
+Tin_stat Tin_tot/(1+0.5*Min^2*(-1+gamma)) 入口静态温度
+pin_tot 19.58[psi] 入口总压力
+pin_stat pin_tot/(1+0.5*Min^2*(-1+gamma))^(gamma/(-1+gamma)) 入口静态压力
+rhoin pin_stat/Rs/Tin_stat 入口密度
+mu_ref rhoin*u_in*h_in/Rein 参考动力黏度
+u_in Min*sqrt(gamma*Rs*Tin_stat+eps) 入口速度
+pOut if(case==1,16.05,0)[psi]+if(case==2,14.1,0)[psi] 出口压力
